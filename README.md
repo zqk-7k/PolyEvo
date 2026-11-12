@@ -63,7 +63,7 @@ See [execution modes](docs/execution.md) for the distinction between reproducing
 
 ## Data
 
-The companion data and archived code are available in [Zenodo](https://doi.org/10.5281/zenodo.24152177). The data archive contains development records, references, individual scoring decisions, figure source tables, method comparisons and prediction results. Final test results are included as summary metrics. `manuscript_map.csv` links the main and supplementary figures and tables to their source files.
+The companion data and archived code are available in [Zenodo](https://doi.org/10.5281/zenodo.24152249). The data archive contains development records, references, individual scoring decisions, figure source tables, method comparisons and prediction results. Final test results are included as summary metrics. `manuscript_map.csv` links the main and supplementary figures and tables to their source files.
 
 ## Licence
 
