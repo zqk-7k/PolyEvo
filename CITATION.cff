@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "Please cite the PolyEvo manuscript when using this software."
+title: "PolyEvo: An evolving workflow for polymer literature extraction"
+type: software
+version: "1.0.0"
+license: MIT
+authors:
+  - family-names: "Zhang"
+    given-names: "Qikai"
+  - family-names: "Li"
+    given-names: "Xuehan"
+  - family-names: "Qin"
+    given-names: "You"
+  - family-names: "Qian"
+    given-names: "Hongyu"
+  - family-names: "Zhang"
+    given-names: "Yang"
+  - family-names: "Zhang"
+    given-names: "Fan"
+  - family-names: "Chen"
+    given-names: "Xin"
+  - family-names: "Li"
+    given-names: "Wei"
+repository-code: "https://github.com/zqk-7k/PolyEvo"
+url: "https://doi.org/10.5281/zenodo.24152177"

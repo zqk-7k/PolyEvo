@@ -1,0 +1,145 @@
+llm:
+  default:
+    provider: dmx
+    model: gpt-5.6-terra
+    base_url: https://www.dmxapi.cn/v1
+    api_format: anthropic-messages
+    thinking_effort: low
+    timeout_seconds: 600
+    max_retries: 0
+    retry_backoff_seconds: 2
+
+  stage_overrides:
+    meta_extract:
+      model: doubao-seed-2-0-pro-260215
+    stage1_material_mention:
+      model: gpt-5.6-terra
+      api_format: openai-chat-completions
+      thinking_effort: null
+    stage2_polymer_entity:
+      model: gpt-5.6-terra
+    stage3_sample_process:
+      model: doubao-seed-2-0-pro-260215
+    stage4_property:
+      model: doubao-seed-2-0-pro-260215
+      timeout_seconds: 900
+      max_retries: 2
+      stream: true
+    stage5_characterization:
+      model: doubao-seed-2-0-pro-260215
+      timeout_seconds: 900
+      max_retries: 0
+      stream: true
+    specialized_attribution_agent:
+      model: gpt-5.6-terra
+      api_format: anthropic-messages
+      thinking_effort: low
+      timeout_seconds: 600
+      max_retries: 0
+      stream: false
+    specialized_coverage_agent:
+      model: gpt-5.6-terra
+      api_format: anthropic-messages
+      thinking_effort: low
+      timeout_seconds: 600
+      max_retries: 0
+      stream: false
+    evolution_reviewer:
+      provider: dmx
+      model: claude-sonnet-5
+      api_format: anthropic-messages
+      thinking_effort: low
+      timeout_seconds: 600
+      max_retries: 0
+      stream: false
+
+pricing:
+  currency: CNY
+  models:
+    gpt-5.6-terra:
+      input_per_million: "17"
+      output_per_million: "101"
+    gpt-5.6-luna:
+      input_per_million: "6.75"
+      output_per_million: "40.48"
+    doubao-seed-2-0-lite-260215:
+      input_per_million: "0.81"
+      output_per_million: "4.86"
+    doubao-seed-2-0-pro-260215:
+      input_per_million: "4.32"
+      output_per_million: "29.15"
+    claude-sonnet-5:
+      input_per_million: "2"
+      output_per_million: "10"
+
+stages:
+  meta_extract:
+    prompt_id: polymer.meta.extract
+  stage1_material_mention:
+    prompt_id: polymer.stage1.material_mention
+    input_sections: [Abstract, Methods, Results]
+    fallback_sections: [Introduction, Conclusion]
+    max_chunk_chars: 8000
+    max_tokens: 8192
+    max_validation_retries: 0
+  stage2_polymer_entity:
+    prompt_id: polymer.stage2.polymer_entity
+    input_sections: [Methods, Results]
+    max_input_chars: 80000
+    max_validation_retries: 0
+    max_tokens: 32768
+  stage3_sample_process:
+    prompt_id: polymer.stage3.sample_process
+    input_sections: [Methods, Results]
+    max_input_chars: 60000
+    max_validation_retries: 1
+    max_tokens: 32768
+  stage4_property:
+    prompt_id: polymer.stage4.property
+    input_sections: [Methods, Results]
+    vocabulary_path: config/polymer_schema.yaml
+    max_input_chars: 110000
+    max_validation_retries: 1
+    max_tokens: 128000
+  stage5_characterization:
+    prompt_id: polymer.stage5.characterization
+    input_sections: [Methods, Results]
+    vocabulary_path: config/polymer_schema.yaml
+    max_input_chars: 90000
+    max_validation_retries: 0
+    max_tokens: 16384
+    sharded_preview: true
+    shard_target_chars: 18000
+    shard_max_chars: 30000
+    shard_max_tokens: 12000
+  stage4t_table_interpretation:
+    prompt_id: polymer.stage4t.table_interpretation
+    max_tokens: 4096
+    approved_tables:
+      - {doc_id: reference_no_0021296, table_id: T_8_91}
+      - {doc_id: reference_no_0038527, table_id: T_5_69}
+      - {doc_id: reference_no_0039705, table_id: T_6_84}
+      - {doc_id: reference_no_0043541, table_id: T_4_49}
+      - {doc_id: reference_no_0043590, table_id: T_1_19}
+  specialized_attribution_agent:
+    prompt_id: polymer.specialized.attribution
+    vocabulary_path: config/polymer_schema.yaml
+    max_tokens: 4096
+    max_repair_attempts: 1
+    nearby_evidence_chars: 5000
+  specialized_coverage_agent:
+    prompt_id: polymer.specialized.coverage
+    vocabulary_path: config/polymer_schema.yaml
+    max_tokens: 8192
+  evolution_reviewer:
+    prompt_id: polymer.evolution.review
+    max_tokens: 8192
+
+concurrency:
+  max_doc_workers: 1
+  max_llm_workers: 1
+
+paths:
+  input_dir: sample_data/processed_documents
+  output_dir: output
+  source_root: source_pdfs

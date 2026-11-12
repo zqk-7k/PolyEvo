@@ -1,0 +1,24 @@
+{
+  "source": "source_closure_prior_field_extension_v3/work",
+  "files": [
+    {
+      "file": "closure_v3.py",
+      "original_sha256": "ae1efc3a59be11cebda7a27b44facb4f19933a6f2f9b620f49248193838bf0bc",
+      "ported_sha256": "8e7d07c1f8d40838cee5350fadf4728b6baaa95ae9a08b6181c593ed19d919d2",
+      "changes": "relative imports; remove standalone research CLI/publisher; indexed field joins without changing disposition semantics"
+    },
+    {
+      "file": "closure_v2.py",
+      "original_sha256": "5751bba1cf98a80da4b7dd02b7f615c68899ba5cb004c4de2aca9d7d61c05113",
+      "ported_sha256": "277e75f4a9e8b3d35ca4b3f2f1f21aef1952dbdeb75ccea073273835e262ae0e",
+      "changes": "relative imports; remove standalone research CLI/publisher; indexed field joins without changing disposition semantics"
+    },
+    {
+      "file": "native_owner_completion_frozen.py",
+      "original_sha256": "4e1a3b873bfa33cc4fcfb3d0fcf8e6101c1f97768681513ae9f4dba39c2ad157",
+      "ported_sha256": "4ddd1501868c3b1848abeb5f43de9a67218e7b68b18fee0e98fe2483d2f21aa7",
+      "changes": "relative imports; remove standalone research CLI/publisher; indexed field joins without changing disposition semantics"
+    }
+  ],
+  "research_predictions_included": false
+}

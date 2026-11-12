@@ -1,0 +1,7 @@
+component,version,role
+manuscript,0d01c8803343f1fad42776dd43d43c119164cb8c,Git base commit; file SHA256 identifies working-tree changes
+extraction,44416ec30ad0bf1b4f2731cf2484632dd6b2f669,Git base commit; file SHA256 identifies working-tree changes
+process_workflow,general158-v1 / archived 2026-10-22 snapshot,Portable source-only process recovery implementation. Not asserted to regenerate every historical candidate.
+development_relationships,taxonomy_v2_r69,Current 94.04 / 85.74 / 89.70 endpoint
+development_preparation,process_relation_trial_158,Current five-dimensional reference coverage endpoint
+preparation_reference,reference_frozen_v2,"Fixed reference, 11,226 items"
